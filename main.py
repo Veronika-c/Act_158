@@ -1,13 +1,27 @@
 import tkinter as tk
 import pathways
 from tkinter import scrolledtext
+from student import Student
 
-result = ["Enter Data to see your results"]
+#Create student
+s1 =Student()
+
+#read data
+pass_l, pass_a, pass_b, combo = pathways.get_scores()
+print(pass_l, pass_a, pass_b, combo)
+
 def on_submit():
     # 1. Get the text from the entry field
     user_input = name_entry.get()
 
 def show_frame(frame):
+    home_screen = create_home_screen(main_container)
+    info_screen = create_info_screen(main_container)
+    path1_screen = create_path1_screen(main_container)
+    path2_screen = create_path2_screen(main_container)
+    path4_screen = create_path4_screen(main_container)
+    path3_screen = create_path3_screen(main_container)
+    path5_screen = create_path5_screen(main_container)
     """Brings the specified frame to the front."""
     frame.tkraise()
 
@@ -59,14 +73,18 @@ def create_home_screen(container):
 def create_info_screen(container):
     def on_submit():
         lit_score = lit_entry.get()
-        lit_score = int(lit_score)
+        s1.lit_score = int(lit_score)
+        print(s1.lit_score)
         bio_score = bio_entry.get()
-        bio_score = int(bio_score)
+        s1.bio_score = int(bio_score)
+        print(s1.bio_score)
         al_score = al_entry.get()
-        al_score = int(al_score)
-        grade = 11
-        global result
-        result = pathways.pathway1_result(lit_score, al_score, bio_score, grade)
+        s1.al_score = int(al_score)
+        print(s1.al_score)
+        s1.grade = 11
+        
+        s1.result1 = pathways.pathway1_result(s1.lit_score, s1.al_score, s1.bio_score, s1.grade, pass_l, pass_a, pass_b)
+        global path1_screen
         path1_screen = create_path1_screen(main_container)
         
     frame = tk.Frame(container, bg="lightgrey")
@@ -131,8 +149,8 @@ def create_path1_screen(container):
     display_area = scrolledtext.ScrolledText(frame, width=50, height=15, wrap=tk.WORD)
     display_area.pack(padx=10, pady=10)
     path1_txt = ""
-    for i in range(len(result)):
-        path1_txt += result[i] +"\n"
+    for i in range(len(s1.result1)):
+        path1_txt += s1.result1[i] +"\n"
         
     long_content = path1_txt
     display_area.insert(tk.INSERT, long_content)
