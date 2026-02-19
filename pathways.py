@@ -104,10 +104,21 @@ def pathway3_result(cte, cert, grade):
         result.append(" If you are in 9th or 10th grade and will like to join a CTE program talk to your counselor about opportunities in your district.")
     return result
 
-print(pathway3_result( True, False , 10))
+#print(pathway3_result( True, False , 10))
 
     
+def pathway4_result(psat, sat):
+    #ap = False
+    result = []
+    #if ap = 
+    if psat <= 970:
+        result.append("You need " + str(970 - psat) + " more points on the PSAT.")
+    if sat <= 1010:
+        result.append("You need " + str(1010 - sat) + " more points on the SAT.")
+    return result
 
+print(pathway4_result(900, 670))
+        
     
 
     
