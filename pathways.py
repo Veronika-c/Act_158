@@ -107,17 +107,17 @@ def pathway3_result(cte, cert, grade):
 #print(pathway3_result( True, False , 10))
 
     
-def pathway4_result(psat, sat):
-    #ap = False
-    result = []
-    #if ap = 
+def pathway4_result(psat, sat, ap):
+    result = ["Pathway 4 allows you to replaced keystones and other assessments,this program only looks at AP, PSAT, and SAT, You may need to talk to your couselor."]
+    if ap:
+        result.append("it looks like you passed your AP exams, you may need to talk with your couselor about what else you need")
     if psat <= 970:
         result.append("You need " + str(970 - psat) + " more points on the PSAT.")
     if sat <= 1010:
         result.append("You need " + str(1010 - sat) + " more points on the SAT.")
     return result
 
-print(pathway4_result(900, 670))
+print(pathway4_result(900, 670, False))
         
     
 
